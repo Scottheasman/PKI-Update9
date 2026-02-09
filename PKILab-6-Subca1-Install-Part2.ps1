@@ -70,7 +70,7 @@ Add-CACrlDistributionPoint `
 # ---- AIA (Authority Information Access) ----
 Write-Host "   Setting AIA locations..." -ForegroundColor Gray
 Get-CAAuthorityInformationAccess |
-    Where-Object { $_.Uri -like '*ldap*' -or $_.Uri -like '*http*' -or $_.Uri -like '*file*' -or $_.Uri -like '*\\*' } |
+    Where-Object { $_.Uri -like '*ldap*' -or $_.Uri -like '*http*' -or $_.Uri -like '*file*' -or $_.Uri -like '\\*' } |
     Remove-CAAuthorityInformationAccess -Force
 
 certutil -setreg CA\CACertPublicationURLs "1:$CertEnrollDir\%3%4.crt\n2:$DfsPkiPath\%3%4.crt"
